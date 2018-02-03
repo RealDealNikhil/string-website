@@ -49,10 +49,19 @@ function operate(str) {
     }
   }
   // print all info on webpage
-  unique_char = "Characters:<br><p>" + unique_char + "</p><br>";
-  unique_punc = "Punctuation:<br><p>" + unique_punc + "</p><br>";
-  unique_nums = "Numbers:<br><p>" + unique_nums + "</p><br>"
-  $("#data").html("Reversed: <em>" + reversed + "</em><br>" + unique_char + unique_punc + unique_nums);
+  if (unique_char) {
+    unique_char = "Characters:<br><p>" + unique_char + "</p><br>";
+  }
+  if (unique_punc) {
+    unique_punc = "Punctuation:<br><p>" + unique_punc + "</p><br>";
+  }
+  if (unique_nums) {
+    unique_nums = "Numbers:<br><p>" + unique_nums + "</p><br>";
+  }
+  $("#reversed").html("Reversed: <em>" + reversed + "</em><br>")
+  $('#reverse_jumbo').css('display','block');
+  $("#data").html(unique_char + unique_punc + unique_nums);
+  $('#data_jumbo').css('display','block');
   console.log(arr);
 }
 

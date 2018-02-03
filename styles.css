@@ -7,3 +7,13 @@ em {
 #data {
   font-size: 15px;
 }
+
+#reverse_jumbo {
+  display: none;
+  background-color: LightSkyBlue;
+}
+
+#data_jumbo {
+  display: none;
+  background-color: OliveDrab;
+}
