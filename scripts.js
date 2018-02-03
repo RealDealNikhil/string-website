@@ -1,3 +1,7 @@
+// Supported ASCII characters
+const RE = /[!-~]/;
+const SHIFT = 33;
+
 // to hold unique characters
 var arr = [];
 
@@ -9,13 +13,15 @@ function reverse_count(str) {
   for (var i = str.length - 1; i >= 0; i--) {
     // add str element to new_str in reversed order
     new_str += str[i];
-    // add character count to array
-    c = str[i].toLowerCase();
-    index = c.charCodeAt(0) - 97;
-    if (arr[index] === undefined) {
-      arr[index] = 0;
+    // check if character matches supported characters
+    if (str[i].match(RE) !== null) {
+      // add character count to array
+      index = str[i].charCodeAt(0) - SHIFT;
+      if (arr[index] === undefined) {
+        arr[index] = 0;
+      }
+      arr[index]++;
     }
-    arr[index]++;
   }
   return new_str;
 }
@@ -29,11 +35,12 @@ function operate(str) {
   var unique = "";
   for (var i = 0; i < arr.length; i++) {
     if (arr[i] !== undefined) {
-      unique += String.fromCharCode(i + 97) + ": <em>" + arr[i] + "</em><br>";
+      unique += String.fromCharCode(i + SHIFT) + ": <em>" + arr[i] + "</em><br>";
     }
   }
   // print all info on webpage
   $("#data").html("Reversed: <em>" + reversed + "</em><br>" + unique);
+  console.log(arr);
 }
 
 $(document).ready(function() {
