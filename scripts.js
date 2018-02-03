@@ -31,15 +31,28 @@ function operate(str) {
   // reset uniqueness array
   arr = [];
   var reversed = reverse_count(str);
-  // get unique characters
-  var unique = "";
+  // get unique characters, punctuation markers, and numbers
+  var unique_char = "";
+  var unique_punc = "";
+  var unique_nums = "";
   for (var i = 0; i < arr.length; i++) {
     if (arr[i] !== undefined) {
-      unique += String.fromCharCode(i + SHIFT) + ": <em>" + arr[i] + "</em><br>";
+      c = String.fromCharCode(i + SHIFT)
+      data_string = c + ": <em>" + arr[i] + "</em>&nbsp;&nbsp;&nbsp;&nbsp;"
+      if (c.match(/[A-Za-z]/) !== null) {
+        unique_char += data_string;
+      } else if (c.match(/[0-9]/) !== null) {
+        unique_nums += data_string;
+      } else {
+        unique_punc += data_string;
+      }
     }
   }
   // print all info on webpage
-  $("#data").html("Reversed: <em>" + reversed + "</em><br>" + unique);
+  unique_char = "Characters:<br><p>" + unique_char + "</p><br>";
+  unique_punc = "Punctuation:<br><p>" + unique_punc + "</p><br>";
+  unique_nums = "Numbers:<br><p>" + unique_nums + "</p><br>"
+  $("#data").html("Reversed: <em>" + reversed + "</em><br>" + unique_char + unique_punc + unique_nums);
   console.log(arr);
 }
 
