@@ -29,11 +29,11 @@ function operate(str) {
   var unique = "";
   for (var i = 0; i < arr.length; i++) {
     if (arr[i] !== undefined) {
-      unique += String.fromCharCode(i + 97) + " = " + arr[i] + "<br>";
+      unique += String.fromCharCode(i + 97) + ": <em>" + arr[i] + "</em><br>";
     }
   }
   // print all info on webpage
-  $("#data").html(arr + "<br>" + str + "<br>" + reversed + "<br>" + unique);
+  $("#data").html("Reversed: <em>" + reversed + "</em><br>" + unique);
 }
 
 $(document).ready(function() {
