@@ -17,3 +17,7 @@ em {
   display: none;
   background-color: OliveDrab;
 }
+
+.invalid_input {
+ border:1px solid red;
+}

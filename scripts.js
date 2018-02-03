@@ -59,15 +59,22 @@ function operate(str) {
     unique_nums = "Numbers:<br><p>" + unique_nums + "</p><br>";
   }
   $("#reversed").html("Reversed: <em>" + reversed + "</em><br>")
-  $('#reverse_jumbo').css('display','block');
+  $("#reverse_jumbo").css('display', 'block');
   $("#data").html(unique_char + unique_punc + unique_nums);
-  $('#data_jumbo').css('display','block');
+  $("#data_jumbo").css('display', 'block');
   console.log(arr);
 }
 
 $(document).ready(function() {
   $('#str-btn').click(function() {
-    operate($('#str').val());
+    if ($('#str').val() === "") {
+      $('#str').addClass('invalid_input');
+      $('#str-error').html("<font color='red'>Please enter a valid string.</font>");
+    } else {
+      $('#str').removeClass('invalid_input');
+      $('#str-error').html("");
+      operate($('#str').val());
+    }
     return false;
   });
 });
