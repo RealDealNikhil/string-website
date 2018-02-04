@@ -4,22 +4,8 @@ em {
   font-weight: 400;
 }
 
-#data {
-  font-size: 15px;
-}
-
-#reverse_jumbo {
-  display: none;
-  background-color: LightSkyBlue;
-}
-
-#data_jumbo {
-  display: none;
-  background-color: OliveDrab;
-}
-
 .invalid_input {
- border:1px solid red;
+ border-color: 2px solid red;
 }
 
 #top {
@@ -76,12 +62,19 @@ button#str-btn:hover {
 }
 
 #second {
+  display: none;
   padding-top: 45px;
   padding-bottom: 45px;
   background: #F2F3F7;
   background-image: linear-gradient(to right, #F2F3F7, #F2F3F7 50%, #E4E8F4 50%, #E4E8F4);
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+#second.row {
+  flex-wrap: wrap;
+  margin-right: 0px;
+  margin-left: 0px;
 }
 
 .logo{
@@ -98,4 +91,9 @@ button#str-btn:hover {
   top: 50px;
   left: 60px;
   height: 35px;
+}
+
+#donutchart {
+  width: 600px;
+  height: 600px;
 }
