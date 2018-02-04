@@ -5,6 +5,9 @@ const SHIFT = 33;
 // to hold unique characters
 var arr = [];
 
+// for google charts
+var chartArray = [['Character', 'Number of Appearances']];
+
 // reverse the string and count unique characters
 function reverse_count(str) {
   var new_str = "";
@@ -25,6 +28,16 @@ function reverse_count(str) {
   }
   return new_str;
 }
+
+// function drawChart(arr) {
+//   var data = google.visualization.arrayToDataTable(arr);
+//   var options = {
+//     title: 'My Daily Activities',
+//     pieHole: 0.4,
+//   };
+//   var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+//   chart.draw(data, options);
+// }
 
 // perform string reversal, character count, and printing operations
 function operate(str) {
@@ -62,17 +75,18 @@ function operate(str) {
   $("#reverse_jumbo").css('display', 'block');
   $("#data").html(unique_char + unique_punc + unique_nums);
   $("#data_jumbo").css('display', 'block');
+  // drawChart(chartArray);
   console.log(arr);
 }
 
 $(document).ready(function() {
+  google.charts.load("current", {packages:["corechart"]});
   $('#str-btn').click(function() {
+    // check to see if anything was entered
     if ($('#str').val() === "") {
       $('#str').addClass('invalid_input');
-      $('#str-error').html("<font color='red'>Please enter a valid string.</font>");
     } else {
       $('#str').removeClass('invalid_input');
-      $('#str-error').html("");
       operate($('#str').val());
     }
     return false;
