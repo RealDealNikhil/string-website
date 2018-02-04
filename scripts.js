@@ -33,10 +33,9 @@ function drawChart(arr) {
   console.log(chartArray);
   var data = google.visualization.arrayToDataTable(arr);
   var options = {
-    title: 'Your string stats',
     pieHole: 0.4,
     backgroundColor: '#E4E8F4',
-    colors: []
+    width: 700,
   };
   var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
   chart.draw(data, options);
