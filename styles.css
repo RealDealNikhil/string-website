@@ -21,3 +21,81 @@ em {
 .invalid_input {
  border:1px solid red;
 }
+
+#top {
+  background-color: #23305B;
+  border-radius: 0px;
+  margin-bottom: 0px;
+  padding: 100px;
+}
+
+input#str {
+  font-size: 15px;
+  padding-left: 29px;
+  padding-top: 9px;
+  width: 215px;
+  height: 52px;
+  margin-right: -5px!important;
+  border-radius: 0px;
+  border-bottom-left-radius: 19px;
+  border-top-left-radius: 19px;
+  border-color: rgba(255,255,255,0);
+  box-shadow: none;
+}
+
+button#str-btn {
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 14px;
+  font-weight: 400;
+  background: #7E98FA;
+  border-radius: 0px;
+  height: 50px;
+  border-color: rgba(255,255,255,0);
+  border-bottom-right-radius: 20px;
+  border-top-right-radius: 20px;
+  box-shadow: none;
+}
+
+button#str-btn:hover {
+  background: #5B78D3;
+}
+
+.container-fluid {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.title {
+  color: #7E98FA;
+  font-size: 27px;
+}
+
+.resultrow {
+  padding: 10px 0px 10px 20px;
+}
+
+#second {
+  padding-top: 45px;
+  padding-bottom: 45px;
+  background: #F2F3F7;
+  background-image: linear-gradient(to right, #F2F3F7, #F2F3F7 50%, #E4E8F4 50%, #E4E8F4);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.logo{
+  position: absolute;
+  top: 50px;
+  left: 100px;
+  color: white;
+  font-size: 30px;
+  font-weight: 200;
+}
+
+#logoPic{
+  position: absolute;
+  top: 50px;
+  left: 60px;
+  height: 35px;
+}
