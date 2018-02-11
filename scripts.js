@@ -9,7 +9,7 @@ function reverse_count(str) {
   for (var i = str.length - 1; i >= 0; i--) {
     // add str element to new_str in reversed order
     new_str += str[i];
-    // check if character matches supported characters
+    // check if character matches supported ASCII characters
     if (str[i].match(RE) !== null) {
       // add character count to dictionary
       key = str[i];
@@ -79,7 +79,31 @@ function operate(str) {
   console.log(dict);
 }
 
+// properly load testing suite (from
+// https://stackoverflow.com/questions/950087/how-do-i-include-a-javascript-file-in-another-javascript-file)
+function loadScript(url, callback) {
+  // Adding the script tag to the head as suggested before
+  var head = document.getElementsByTagName('head')[0];
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src = url;
+
+  // Then bind the event to the callback function.
+  // There are several events for cross browser compatibility.
+  script.onreadystatechange = callback;
+  script.onload = callback;
+
+  // Fire the loading
+  head.appendChild(script);
+}
+
+// loading script callback
+var post_tests = function() {
+  console.log("done");
+};
+
 $(document).ready(function() {
+  // load google charts
   google.charts.load("current", {packages:["corechart"]});
   $('#str-btn').click(function() {
     // check to see if anything was entered
@@ -92,4 +116,6 @@ $(document).ready(function() {
     }
     return false;
   });
+  // load and run testing suite
+  loadScript("tests.js", post_tests);
 });

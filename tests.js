@@ -25,11 +25,12 @@ function test(str, expected_rev, expected_count) {
   var result = reverse_count(str);
   var reversed = result.reversed;
   var count = result.count;
-  if (reversed !== expected_rev || !arrays_equal(count, expected_count)) {
+  if (reversed !== expected_rev || !isEqual(count, expected_count)) {
     results.failed++;
   }
   results.total++;
 }
 
-
-console.log(results.failed + " out of " + results.total + " tests failed");
+test("Hello, World!", "!dlroW ,olleH", {'H': 1, 'e': 1, 'l': 3, 'o': 2, ',': 1,
+    'W': 1, 'r': 1, 'd': 1, '!': 1});
+console.log(results.total - results.failed + " out of " + results.total + " tests passed");
