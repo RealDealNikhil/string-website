@@ -29,6 +29,7 @@ function reverse_count(str) {
   return new_str;
 }
 
+// Draw Google chart of characters in string
 function drawChart(arr) {
   console.log(chartArray);
   var data = google.visualization.arrayToDataTable(arr);
@@ -86,7 +87,7 @@ function operate(str) {
 $(document).ready(function() {
   google.charts.load("current", {packages:["corechart"]});
   $('#str-btn').click(function() {
-    // check to see if anything was entered FIX
+    // check to see if anything was entered
     if ($('#str').val() === "") {
       $('#str').addClass('invalid_input');
     } else {
