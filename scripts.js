@@ -2,16 +2,11 @@
 const RE = /[!-~]/;
 const SHIFT = 33;
 
-// to hold unique characters
-var arr = [];
-
-// for google charts
-var chartArray = [['Character', 'Number of Appearances']];
-
 // reverse the string and count unique characters
 function reverse_count(str) {
   var new_str = "";
   var c;
+  var arr = [];
   var index;
   for (var i = str.length - 1; i >= 0; i--) {
     // add str element to new_str in reversed order
@@ -26,12 +21,14 @@ function reverse_count(str) {
       arr[index]++;
     }
   }
-  return new_str;
+  return {
+    reversed: new_str,
+    count: arr
+  };
 }
 
 // Draw Google chart of characters in string
 function drawChart(arr) {
-  console.log(chartArray);
   var data = google.visualization.arrayToDataTable(arr);
   var options = {
     pieHole: 0.4,
@@ -44,11 +41,12 @@ function drawChart(arr) {
 
 // perform string reversal, character count, and printing operations
 function operate(str) {
-  // reset uniqueness and pie chart arrays
-  arr = [];
-  chartArray = [['Character', 'Number of Appearances']];
+  // set array for pie chart
+  var chartArray = [['Character', 'Number of Appearances']];
   // reverse string and get character count
-  var reversed = reverse_count(str);
+  var results = reverse_count(str);
+  var reversed = results.reversed;
+  var arr = results.count;
   // get unique characters, punctuation markers, and numbers
   var unique_char = "";
   var unique_punc = "";
@@ -81,7 +79,6 @@ function operate(str) {
   $("#data").html(unique_char + unique_punc + unique_nums);
   $("#second").css('display', 'flex');
   drawChart(chartArray);
-  console.log(arr);
 }
 
 $(document).ready(function() {
@@ -89,6 +86,7 @@ $(document).ready(function() {
   $('#str-btn').click(function() {
     // check to see if anything was entered
     if ($('#str').val() === "") {
+      // can this be animated?
       $('#str').addClass('invalid_input');
     } else {
       $('#str').removeClass('invalid_input');
