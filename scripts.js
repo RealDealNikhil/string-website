@@ -1,29 +1,27 @@
 // Supported ASCII characters
 const RE = /[!-~]/;
-const SHIFT = 33;
 
-// reverse the string and count unique characters
 function reverse_count(str) {
   var new_str = "";
   var c;
-  var arr = [];
-  var index;
+  var dict = {};
+  var key;
   for (var i = str.length - 1; i >= 0; i--) {
     // add str element to new_str in reversed order
     new_str += str[i];
     // check if character matches supported characters
     if (str[i].match(RE) !== null) {
-      // add character count to array
-      index = str[i].charCodeAt(0) - SHIFT;
-      if (arr[index] === undefined) {
-        arr[index] = 0;
+      // add character count to dictionary
+      key = str[i].charCodeAt(0);
+      if (dict[key] === undefined) {
+        dict[key] = 0;
       }
-      arr[index]++;
+      dict[key]++;
     }
   }
   return {
     reversed: new_str,
-    count: arr
+    count: dict
   };
 }
 
@@ -46,23 +44,22 @@ function operate(str) {
   // reverse string and get character count
   var results = reverse_count(str);
   var reversed = results.reversed;
-  var arr = results.count;
+  var dict = results.count;
   // get unique characters, punctuation markers, and numbers
   var unique_char = "";
   var unique_punc = "";
   var unique_nums = "";
-  for (var i = 0; i < arr.length; i++) {
-    if (arr[i] !== undefined) {
-      c = String.fromCharCode(i + SHIFT)
-      chartArray.push([c, arr[i]]);
-      data_string = c + ": <em class='big'>" + arr[i] + "</em>&nbsp;&nbsp;&nbsp;&nbsp;";
-      if (c.match(/[A-Za-z]/) !== null) {
-        unique_char += data_string;
-      } else if (c.match(/[0-9]/) !== null) {
-        unique_nums += data_string;
-      } else {
-        unique_punc += data_string;
-      }
+  // loop over keys in dictionary
+  for (var key in dict) {
+    c = String.fromCharCode(key)
+    chartArray.push([c, dict[key]]);
+    data_string = c + ": <em class='big'>" + dict[key] + "</em>&nbsp;&nbsp;&nbsp;&nbsp;";
+    if (c.match(/[A-Za-z]/) !== null) {
+      unique_char += data_string;
+    } else if (c.match(/[0-9]/) !== null) {
+      unique_nums += data_string;
+    } else {
+      unique_punc += data_string;
     }
   }
   // print all info on webpage
@@ -79,6 +76,7 @@ function operate(str) {
   $("#data").html(unique_char + unique_punc + unique_nums);
   $("#second").css('display', 'flex');
   drawChart(chartArray);
+  console.log(dict);
 }
 
 $(document).ready(function() {

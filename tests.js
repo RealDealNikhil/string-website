@@ -3,23 +3,7 @@ var results = {
   failed: 0
 };
 
-function arrays_equal(a, b) {
-  if (a === b) {
-    return true;
-  }
-  if (a == null || b == null) {
-    return false;
-  }
-  if (a.length != b.length) {
-    return false;
-  }
-  for (var i = 0; i < a.length; i++) {
-    if (a[i] !== b[i]) {
-        return false;
-    }
-  }
-  return true;
-}
+
 
 function test(str, expected_rev, expected_count) {
   var result = reverse_count(str);
@@ -32,3 +16,4 @@ function test(str, expected_rev, expected_count) {
 }
 
 
+console.log(results.failed + " out of " + results.total + " tests failed");
