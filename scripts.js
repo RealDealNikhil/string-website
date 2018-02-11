@@ -12,7 +12,7 @@ function reverse_count(str) {
     // check if character matches supported characters
     if (str[i].match(RE) !== null) {
       // add character count to dictionary
-      key = str[i].charCodeAt(0);
+      key = str[i];
       if (dict[key] === undefined) {
         dict[key] = 0;
       }
@@ -51,7 +51,7 @@ function operate(str) {
   var unique_nums = "";
   // loop over keys in dictionary
   for (var key in dict) {
-    c = String.fromCharCode(key)
+    c = key;
     chartArray.push([c, dict[key]]);
     data_string = c + ": <em class='big'>" + dict[key] + "</em>&nbsp;&nbsp;&nbsp;&nbsp;";
     if (c.match(/[A-Za-z]/) !== null) {
