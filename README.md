@@ -11,4 +11,4 @@ The algorithm that reverses the string and counts each character progresses as f
   3. Process the dictionary of characters and add each count to its respective html output div and correctly formats an array for the google-charts pie chart.
     * There are separate sections for letters, punctuation, and numbers counts.
 
-Upon loading the webpage, I run a test suite which outputs the number of successful and failed tests in the console window. I have tried to capture simple cases, edge cases, large inputs, and entering unsupported characters in these tests.
+Upon loading the webpage, I run a test suite which outputs the number of successful tests in the console window. I have tried to capture simple cases, edge cases, large inputs, and entering unsupported characters in these tests.
