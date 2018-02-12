@@ -59,6 +59,7 @@ button#str-btn:hover {
 
 .resultrow {
   padding: 10px 0px 10px 20px;
+  overflow-wrap: break-word;
 }
 
 #second {
