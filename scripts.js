@@ -45,35 +45,42 @@ function operate(str) {
   var results = reverse_count(str);
   var reversed = results.reversed;
   var dict = results.count;
-  // get unique characters, punctuation markers, and numbers
-  var unique_char = "";
-  var unique_punc = "";
-  var unique_nums = "";
-  // loop over keys in dictionary
-  for (var key in dict) {
-    c = key;
-    chartArray.push([c, dict[key]]);
-    data_string = c + ": <em class='big'>" + dict[key] + "</em>&nbsp;&nbsp;&nbsp;&nbsp;";
-    if (c.match(/[A-Za-z]/) !== null) {
-      unique_char += data_string;
-    } else if (c.match(/[0-9]/) !== null) {
-      unique_nums += data_string;
-    } else {
-      unique_punc += data_string;
+  var data;
+  if (Object.keys(dict).length === 0) {
+    data = "<p>We don't have support for these kinds of characters yet. Try another string!</p>";
+  } else {
+    // get unique characters, punctuation markers, and numbers
+    var unique_char = "";
+    var unique_punc = "";
+    var unique_nums = "";
+    // loop over keys in dictionary
+    for (var key in dict) {
+      c = key;
+      chartArray.push([c, dict[key]]);
+      data_string = c + ": <em class='big'>" + dict[key] + "</em>&nbsp;&nbsp;&nbsp;&nbsp;";
+      if (c.match(/[A-Za-z]/) !== null) {
+        unique_char += data_string;
+      } else if (c.match(/[0-9]/) !== null) {
+        unique_nums += data_string;
+      } else {
+        unique_punc += data_string;
+      }
     }
+    // print all info on webpage
+    if (unique_char) {
+      unique_char = "Characters:<br><p>" + unique_char + "</p><br>";
+    }
+    if (unique_punc) {
+      unique_punc = "Punctuation:<br><p>" + unique_punc + "</p><br>";
+    }
+    if (unique_nums) {
+      unique_nums = "Numbers:<br><p>" + unique_nums + "</p><br>";
+    }
+    data = unique_char + unique_punc + unique_nums;
   }
-  // print all info on webpage
-  if (unique_char) {
-    unique_char = "Characters:<br><p>" + unique_char + "</p><br>";
-  }
-  if (unique_punc) {
-    unique_punc = "Punctuation:<br><p>" + unique_punc + "</p><br>";
-  }
-  if (unique_nums) {
-    unique_nums = "Numbers:<br><p>" + unique_nums + "</p><br>";
-  }
+
   $("#reversed").html("Reversed: <em class='big'>" + reversed + "</em><br>")
-  $("#data").html(unique_char + unique_punc + unique_nums);
+  $("#data").html(data);
   $("#second").css('display', 'flex');
   drawChart(chartArray);
   console.log(dict);
