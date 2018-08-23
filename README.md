@@ -5,11 +5,11 @@ This website allows you to enter a string of any length and will display it reve
 
 The algorithm that reverses the string and counts each character progresses as follows:
   1. I loop through the string backwards.
-    * Add each character to a reversed string variable.
-    * If the character is supported, increment its count in a table of character counts.
-    * Return the reversed string and the table of character counts.
+     * Add each character to a reversed string variable.
+     * If the character is supported, increment its count in a table of character counts.
+     * Return the reversed string and the table of character counts.
   2. Add the reversed string to its respective html output div.
   3. Process the dictionary of characters and add each count to its respective html output div and correctly formats an array for the google-charts pie chart.
-    * There are separate sections for letters, punctuation, and numbers counts.
+     * There are separate sections for letters, punctuation, and numbers counts.
 
 Upon loading the webpage, I run a test suite which outputs the number of successful tests in the console window. I have tried to capture simple cases, edge cases, large inputs, and entering unsupported characters in these tests.
